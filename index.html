@@ -31,20 +31,13 @@
   <script src="js/model/Wall.js"></script>
   <script src="js/model/Dot.js"></script>
   <script src="js/model/Position.js"></script>
+  <script src="js/model/Layer.js"></script>
+
   <script src="js/maze.js"></script>
   <script src="js/script.js"></script>
   <script>
-    // tests 1.4 : tuiles :
-    const wall = new Wall("w1");
-    const dot = new Dot("d1", true);
-    console.log(wall);
-    console.log(dot);
-    console.log(dot.isEnergizer);
-
-    // tests 1.5 : position
-    const pos = new Position(3, 14);
-    console.log("line", pos.raw);
-    console.log("column", pos.column);
+    createBoard();
+    test();
   </script>
 
 </body>
