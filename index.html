@@ -27,8 +27,18 @@
 
     </div>
   </div>
+  <script src="js/model/Tile.js"></script>
+  <script src="js/model/Wall.js"></script>
+  <script src="js/model/Dot.js"></script>
   <script src="js/maze.js"></script>
   <script src="js/script.js"></script>
+  <script>
+    const wall = new Wall("w1");
+    const dot = new Dot("d1", true);
+    console.log(wall);
+    console.log(dot);
+    console.log(dot.isEnergizer);
+  </script>
 
 </body>
 
