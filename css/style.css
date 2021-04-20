@@ -1,0 +1,41 @@
+body {
+  background-color: #000;
+  color: #fff
+}
+
+#root{
+  margin: 0 auto;
+  padding: 10px;
+  width: 420px;
+  border: solid 1px blue;
+}
+
+.header{
+  height: 100px;
+  padding: 3px 50px;
+  border: solid 1px blue;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  line-height: 2px;
+}
+
+.header h5,h2 {
+  text-align: center;
+}
+
+.game-body{
+  width: 420px;
+  height: 465px;
+  margin: 0 auto;
+}
+
+
+
+.footer {
+  height: 20px;
+
+  padding: 3px;
+  border: solid 1px blue;
+  border-radius: 5px;
+  margin-top: 5px;
+}
