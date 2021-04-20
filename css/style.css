@@ -24,12 +24,16 @@ body {
 }
 
 .game-body{
+  position: relative;
   width: 420px;
   height: 465px;
   margin: 0 auto;
 }
 
-
+.game-body div{
+  width: 15px;
+  height: 15px;
+}
 
 .footer {
   height: 20px;
@@ -38,4 +42,18 @@ body {
   border: solid 1px blue;
   border-radius: 5px;
   margin-top: 5px;
+}
+
+/*Wall*/
+.wall{
+  border: 6px solid blue;
+  box-sizing: border-box;
+}
+
+/*pac-dot*/
+.pac-dot{
+  background-color: yellow;
+  border: 3px solid black;
+  border-radius: 50%;
+  box-sizing: border-box;
 }
