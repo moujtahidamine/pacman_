@@ -62,5 +62,10 @@ function test() {
   console.log("nbColumns", maze.nbColumns);
   console.log("getWallLayerTile", maze.getWallLayerTile(new Position(0, 1)));
   console.log("getDotLayerTile", maze.getDotLayerTile(new Position(1, 5)));
+
+  // test 1.8 : game
+  const game = new Game(RAW_MAZE);
+  console.log(game);
+
   console.log("### Fin de Test! ###");
 }
