@@ -55,5 +55,12 @@ function test() {
   console.log("hasTile-1", layer.hasTile(pos)); // true
   console.log("hasTile-2", layer.hasTile(new Position(2, 2))); // false
 
+  // test 1.7 : Maze
+  const maze = new Maze(RAW_MAZE);
+  console.log(maze);
+  console.log("nbRows", maze.nbRows);
+  console.log("nbColumns", maze.nbColumns);
+  console.log("getWallLayerTile", maze.getWallLayerTile(new Position(0, 1)));
+  console.log("getDotLayerTile", maze.getDotLayerTile(new Position(1, 5)));
   console.log("### Fin de Test! ###");
 }
