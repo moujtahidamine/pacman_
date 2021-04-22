@@ -60,4 +60,24 @@ function test_2() {
   // 2.3 refactoring position
   let pos = new Position(41, 0);
   console.log(pos.nextPosition(Direction.SOUTH)); // doit afficher la Position(42, 0).
+
+  // 2.4 sprites
+  const pos2 = new Position(2, 41);
+  const sp = new Sprite(pos2, Direction.EAST, "s1");
+  console.log("sprite avant déplacement", sp.position);
+  sp.move();
+  console.log("sprite aprés déplacement", sp.position);
+
+  sp.askToChangeDirection(Direction.WEST);
+  console.log("la direction reste inchangée :", sp.direction);
+  console.log(
+    "une demande de direction a bien été faite :",
+    sp.askedToChangeDirection
+  );
+  console.log("la direction demandée :", sp.askedDirection);
+  sp.changeDirection();
+  console.log("la direction a bien été changée :", sp.direction);
+  console.log("aucune demande de direction :", sp.askedToChangeDirection);
+  sp.move();
+  console.log("sprite est bien revenu à sa position de départ", sp.position);
 }
