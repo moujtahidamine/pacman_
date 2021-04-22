@@ -50,4 +50,10 @@ function test_2() {
   const tile = new Tile("t-1");
   console.log("component", component);
   console.log("tile", tile);
+
+  // 2.2 Directions
+  console.log("NORTH", Direction.NORTH);
+  console.log("SOUTH", Direction.SOUTH);
+  console.log("WEST", Direction.WEST);
+  console.log("EAST", Direction.EAST);
 }
