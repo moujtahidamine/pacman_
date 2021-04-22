@@ -35,7 +35,8 @@ class Layer {
    * @param {Tile} tile
    */
   setTile(pos, tile) {
-    this._array[pos.row][pos.column] = tile;
+    if (this.contains(pos)) this._array[pos.row][pos.column] = tile;
+    else console.log("Erreur : position erronée");
   }
 
   /**

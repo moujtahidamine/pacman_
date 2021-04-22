@@ -81,3 +81,13 @@ function test_2() {
   sp.move();
   console.log("sprite est bien revenu à sa position de départ", sp.position);
 }
+
+function test_2_5() {
+  const game = new Game(RAW_MAZE);
+  console.log("canWalkOn", game.maze.canWalkOn(new Position(0, 0))); // false.
+  console.log("canWalkOn", game.maze.canWalkOn(new Position(1, 1))); // true.
+  console.log("canPick", game.maze.canPick(new Position(1, 1))); // true.
+  console.log("pick", game.maze.pick(new Position(1, 1))); // une gomme.
+  console.log("canPick", game.maze.canPick(new Position(11, 0))); // false.
+  console.log("pick", game.maze.pick(new Position(11, 0))); // Erreur !
+}

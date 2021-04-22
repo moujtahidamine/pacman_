@@ -33,6 +33,8 @@ class Maze {
             new Position(i, j),
             new Dot("dot-energizer" + i + "-" + j, true)
           );
+        } else if (line[j] === 4) {
+          this._positionDepartPacman = new Position(i, j);
         }
       }
     }
@@ -50,6 +52,13 @@ class Maze {
    */
   get nbColumns() {
     return this._nbColumns;
+  }
+
+  /**
+   * @returns {Position}
+   */
+  get positionDepartPacman() {
+    return this._positionDepartPacman;
   }
 
   /**
@@ -72,5 +81,47 @@ class Maze {
     if (this._dotLayer.contains(pos)) {
       return this._dotLayer.getTile(pos);
     } else return null;
+  }
+
+  /**
+   * retourne true si la position fait partie du labyrinthe et s’il n’y a pas collision avec un mur à la position donnée, false sinon
+   * @param {Position} position
+   * @return {boolean}
+   */
+  canWalkOn(position) {
+    if (position.row < 0 || position.row > this._nbRows - 1) return false;
+    if (position.column < 0 || position.column > this.nbColumns - 1)
+      return false;
+
+    if (this._wallLayer.hasTile(position) === true) return false;
+    else {
+      return true;
+    }
+  }
+
+  /**
+   * retourne true si la position fait partie du labyrinthe et s’il y a une gomme à prendre
+   * @param {Position} position
+   * @return {boolean}
+   */
+  canPick(position) {
+    if (position.row < 0 || position.row > this._nbRows - 1) return false;
+    if (position.column < 0 || position.column > this.nbColumns - 1)
+      return false;
+
+    if (this._dotLayer.hasTile(position) === true) return true;
+    else {
+      return false;
+    }
+  }
+
+  /**
+   * retourne la gomme (normale ou énergétique) qui se trouve à la position donnée. Lance une erreur s’il n’y a rien
+   * @param {Position} position
+   * @return {Dot}
+   */
+  pick(position) {
+    if (this.canPick(position)) return this._dotLayer.getTile(position);
+    else console.error("Erreur! la position ne contient pas de gomme");
   }
 }
