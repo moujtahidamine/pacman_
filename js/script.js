@@ -2,7 +2,7 @@
 
 const layout = RAW_MAZE.table;
 
-function test() {
+function test_1() {
   console.log("### Test... ###");
   // tests 1.4 : tuiles :
   const wall = new Wall("w1");
@@ -43,4 +43,11 @@ function test() {
   console.log(view);
 
   console.log("### Fin de Test! ###");
+}
+
+function test_2() {
+  const component = new Component("c-1");
+  const tile = new Tile("t-1");
+  console.log("component", component);
+  console.log("tile", tile);
 }
