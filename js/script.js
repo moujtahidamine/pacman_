@@ -56,4 +56,8 @@ function test_2() {
   console.log("SOUTH", Direction.SOUTH);
   console.log("WEST", Direction.WEST);
   console.log("EAST", Direction.EAST);
+
+  // 2.3 refactoring position
+  let pos = new Position(41, 0);
+  console.log(pos.nextPosition(Direction.SOUTH)); // doit afficher la Position(42, 0).
 }
