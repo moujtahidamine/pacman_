@@ -23,7 +23,7 @@ class Layer {
    * @returns {boolean}
    */
   contains(pos) {
-    if (pos.raw < 0 || pos.raw > this._nbRows - 1) return false;
+    if (pos.row < 0 || pos.row > this._nbRows - 1) return false;
     if (pos.column < 0 || pos.column > this._nbColumns - 1) return false;
 
     return true;
@@ -35,7 +35,7 @@ class Layer {
    * @param {Tile} tile
    */
   setTile(pos, tile) {
-    this._array[pos.raw][pos.column] = tile;
+    this._array[pos.row][pos.column] = tile;
   }
 
   /**
@@ -44,7 +44,7 @@ class Layer {
    * @returns {Tile}
    */
   getTile(pos) {
-    return this._array[pos.raw][pos.column];
+    return this._array[pos.row][pos.column];
   }
 
   /**

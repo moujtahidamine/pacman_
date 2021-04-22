@@ -3,19 +3,19 @@
 */
 class Position {
   /**
-   * @param {Number} raw   l’indice de la ligne
+   * @param {Number} row   l’indice de la ligne
    * @param {Number} column   l’indice de la colonne
    */
-  constructor(raw, column) {
-    this._raw = raw;
+  constructor(row, column) {
+    this._row = row;
     this._column = column;
   }
 
   /**
    * @returns {Number}
    */
-  get raw() {
-    return this._raw;
+  get row() {
+    return this._row;
   }
 
   /**
