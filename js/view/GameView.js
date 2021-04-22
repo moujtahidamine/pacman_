@@ -1,12 +1,15 @@
 class GameView {
   /**
-   * @param {Game}
+   * @param {Game} game
    */
   constructor(game) {
     createBoard(game.maze);
   }
 }
 
+/**
+ * @param {Maze} maze
+ */
 function createBoard(maze) {
   const root = document.getElementById("root");
   root.style.width = TAILLE_TUILE * maze.nbColumns + "px";
