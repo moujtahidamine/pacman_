@@ -52,8 +52,8 @@ class Sprite extends Component {
 
   /**
    * Permet de signifier qu’à la prochaine occasion,
-   *  le sprite devra changer de direction. Il ne faut pas le faire encore, juste modifier les
-   *  propriétés askedToChangeDirection et askedDirection
+   * le sprite devra changer de direction. Il ne faut pas le faire encore, juste modifier les
+   * propriétés askedToChangeDirection et askedDirection
    * @param {Direction} direction
    */
   askToChangeDirection(direction) {

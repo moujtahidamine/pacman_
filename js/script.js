@@ -91,3 +91,9 @@ function test_2_5() {
   console.log("canPick", game.maze.canPick(new Position(11, 0))); // false.
   console.log("pick", game.maze.pick(new Position(11, 0))); // Erreur !
 }
+
+function test_2_6() {
+  const pacman = new Pacman(new Position(10, 10), Direction.NORTH);
+  const pacmanCtrl = new PacmanCtrl(pacman);
+  const pacmanView = new PacmanView(pacmanCtrl);
+}
