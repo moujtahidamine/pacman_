@@ -28,7 +28,7 @@ body {
 }
 
 .game-body div{
-  
+
 }
 
 .footer {
@@ -38,6 +38,15 @@ body {
   border: solid 1px blue;
   border-radius: 5px;
   margin-top: 5px;
+}
+
+/*Pacman*/
+.pacman{
+  background-color: #fff;
+  border:1px solid black;
+  border-radius: 50%;
+  box-sizing: border-box;
+  z-index: 9999;
 }
 
 /*Wall*/

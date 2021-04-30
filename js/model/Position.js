@@ -34,6 +34,9 @@ class Position {
     const new_row = this._row + dir.deltaRow;
     const new_column = this._column + dir.deltaColumn;
 
+    // if (new_row < 0 || new_row > this._row - 1) return null;
+    // if (new_column < 0 || new_column > this._column - 1) return null;
+
     return new Position(new_row, new_column);
   }
 }

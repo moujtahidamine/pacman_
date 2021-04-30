@@ -34,7 +34,7 @@ class Maze {
             new Dot("dot-energizer" + i + "-" + j, true)
           );
         } else if (line[j] === 4) {
-          this._positionDepartPacman = new Position(i, j);
+          this._pacmanRespawn = new Position(i, j);
         }
       }
     }
@@ -55,10 +55,11 @@ class Maze {
   }
 
   /**
+   * position de départ du pacman
    * @returns {Position}
    */
-  get positionDepartPacman() {
-    return this._positionDepartPacman;
+  get pacmanRespawn() {
+    return this._pacmanRespawn;
   }
 
   /**
