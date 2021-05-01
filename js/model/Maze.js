@@ -35,6 +35,8 @@ class Maze {
           );
         } else if (line[j] === 4) {
           this._pacmanRespawn = new Position(i, j);
+        } else if (line[j] === 5) {
+          this._ghostRespawn = new Position(i, j);
         }
       }
     }
@@ -60,6 +62,14 @@ class Maze {
    */
   get pacmanRespawn() {
     return this._pacmanRespawn;
+  }
+
+  /**
+   * position de départ du pacman
+   * @returns {Position}
+   */
+  get ghostRespawn() {
+    return this._ghostRespawn;
   }
 
   /**

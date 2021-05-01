@@ -49,6 +49,38 @@ body {
   z-index: 9999;
 }
 
+.pinky{
+  background-color: #FF1493;
+  border:1px solid black;
+  border-radius: 50%;
+  box-sizing: border-box;
+  z-index: 9999;
+}
+
+.blinky{
+  background-color: red;
+  border:1px solid black;
+  border-radius: 50%;
+  box-sizing: border-box;
+  z-index: 9999;
+}
+
+.clyde{
+  background-color: orange;
+  border:1px solid black;
+  border-radius: 50%;
+  box-sizing: border-box;
+  z-index: 9999;
+}
+
+.inky{
+  background-color: blue;
+  border:1px solid black;
+  border-radius: 50%;
+  box-sizing: border-box;
+  z-index: 9999;
+}
+
 /*Wall*/
 .wall{
   border: 6px solid blue;

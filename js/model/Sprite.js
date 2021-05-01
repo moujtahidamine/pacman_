@@ -9,6 +9,8 @@ class Sprite extends Component {
     this._position = position;
     this._direction = direction;
     this._askedToChangeDirection = false; // false par défault
+
+    this._previousPosition = undefined;
   }
 
   /**
@@ -17,6 +19,14 @@ class Sprite extends Component {
    */
   get position() {
     return this._position;
+  }
+
+  /**
+   * La position précedante du sprite
+   * @returns {Position}
+   */
+  get previousPosition() {
+    return this._previousPosition;
   }
 
   /**
@@ -47,6 +57,7 @@ class Sprite extends Component {
    * permet de faire avancer le sprite dans sa direction
    */
   move() {
+    this._previousPosition = this.position;
     this._position = this._position.nextPosition(this._direction);
   }
 
@@ -69,4 +80,9 @@ class Sprite extends Component {
     this._direction = this._askedDirection;
     this._askedDirection = undefined;
   }
+
+  /**
+   * ne fait rien au niveau du sprite
+   */
+  notifyIsBlocked() {}
 }
