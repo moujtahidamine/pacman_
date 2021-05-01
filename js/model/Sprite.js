@@ -10,7 +10,7 @@ class Sprite extends Component {
     this._direction = direction;
     this._askedToChangeDirection = false; // false par défault
 
-    this._previousPosition = undefined;
+    this._previousPosition = position;
   }
 
   /**
