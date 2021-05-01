@@ -68,8 +68,12 @@ class Game {
     const pinky = this._pinky; // pinky
     const clyde = this._clyde; // clyde
 
-    let canPacmanWalkOn = false;
+    //  si Pacman a été mangé alors réinitialise les propriétés de tous les sprites
+    if (this.pacmanHasBeenEaten()) {
+      this.respawn();
+    }
 
+    let canPacmanWalkOn = false; // variable de type boolean pour verifier est ce que le sprite peut se déplacer vers une position donnée
     if (pacman.askedDirection !== undefined && pacman.askedToChangeDirection) {
       // si le pacman peut aller dans la direction souhaitée => canWalkOn <- true
       canPacmanWalkOn = this._canSpriteWalkOn(pacman);
@@ -83,7 +87,7 @@ class Game {
 
     // pinky
     pinky.notifyIsBlocked();
-    let canPinkyWalkOn = false;
+    let canPinkyWalkOn = false; // variable de type boolean pour verifier est ce que le sprite peut se déplacer vers une position donnée
 
     if (pinky.askedDirection !== undefined && pinky.askedToChangeDirection) {
       canPinkyWalkOn = this._canSpriteWalkOn(pinky);
@@ -93,7 +97,7 @@ class Game {
 
     //blinky
     blinky.notifyIsBlocked();
-    let canBlinkyWalkOn = false;
+    let canBlinkyWalkOn = false; // variable de type boolean pour verifier est ce que le sprite peut se déplacer vers une position donnée
 
     if (blinky.askedDirection !== undefined && blinky.askedToChangeDirection) {
       canBlinkyWalkOn = this._canSpriteWalkOn(blinky);
@@ -103,7 +107,7 @@ class Game {
 
     //clyde
     clyde.notifyIsBlocked();
-    let canClydeWalkOn = false;
+    let canClydeWalkOn = false; // variable de type boolean pour verifier est ce que le sprite peut se déplacer vers une position donnée
 
     if (clyde.askedDirection !== undefined && clyde.askedToChangeDirection) {
       canClydeWalkOn = this._canSpriteWalkOn(clyde);
@@ -114,7 +118,7 @@ class Game {
     //inky
     const inky = this._inky;
     inky.notifyIsBlocked();
-    let canInkyWalkOn = false;
+    let canInkyWalkOn = false; // variable de type boolean pour verifier est ce que le sprite peut se déplacer dans la labyrinthe vers une position donnée
 
     if (inky.askedDirection !== undefined && inky.askedToChangeDirection) {
       canInkyWalkOn = this._canSpriteWalkOn(inky);
@@ -141,10 +145,40 @@ class Game {
       ghost.changeDirection(); // changer la direction
       ghost.move(); // bouger pinky
       if (ghost.canEat(this._pacman)) {
-        console.log("Pacman got eaten");
+        this._pacman.hasBeenEaten();
       }
     } else {
       ghost.notifyIsBlocked();
     }
+  }
+
+  /** // TODO:  */
+  /**
+   * le jeu est terminé s’il ne reste pas de vie au Pacman.
+   * @return {boolean}
+   */
+  isGameOver() {
+    const nbLives = this._pacman.nbLives;
+    if (nbLives > 0) {
+      return false;
+    } else return true;
+  }
+  /**
+   *  retourne true si pacman a été mangé (s’il est mort).
+   * @return {boolean}
+   */
+  pacmanHasBeenEaten() {
+    return this._pacman.isDead;
+  }
+
+  /**
+   *  réinitialise les propriétés position, movement et isDead pour tous les sprites en jeu.
+   */
+  respawn() {
+    this._pacman.respawn();
+    this._blinky.respawn();
+    this._pinky.respawn();
+    this._inky.respawn();
+    this.clyde.respawn();
   }
 }

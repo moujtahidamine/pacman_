@@ -11,6 +11,9 @@ class GameView {
    * Permet de rafraîchir le jeu
    */
   updateFrame() {
+    const nbLivesDiv = document.getElementById("nb-lives");
+    nbLivesDiv.innerHTML = this._game._pacman.nbLives;
+
     const pacman = this._game.pacman; // Demander au game le pacman
     const pacmanPosition = pacman.position; // Demander à ce pacman sa position
     //Modifier dans le css les propriétés top et left de ce pacman en conséquence
@@ -129,5 +132,13 @@ class GameView {
     div.style.position = "absolute";
     div.style.top = TAILLE_TUILE * i + "px";
     div.style.left = TAILLE_TUILE * j + "px";
+  }
+
+  /**
+   * cette méthode permet de rafraîchir le nombre de vie.
+   */
+  updateLives() {
+    const nbLivesDiv = document.getElementById("nb-lives");
+    nbLivesDiv.innerHTML = this._game._pacman.nbLives;
   }
 }

@@ -27,8 +27,17 @@ class GameCtrl {
 
   run() {
     this._timer = setInterval(() => {
-      this._game.moveSprites();
+      const isGameOver = this._game.isGameOver();
+
+      // Lorsque le Pacman a perdu toutes ses vies => afficher un message dans la console et arrêter le mouvement des sprites.
+      if (isGameOver === false) {
+        this._game.moveSprites();
+      } else {
+        console.log("GAME OVER");
+      }
+
       this._view.updateFrame();
+      this._view.updateLives();
     }, RUN_INTERVAL);
   }
 }

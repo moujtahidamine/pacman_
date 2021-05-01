@@ -12,3 +12,5 @@ const DIRECTIONS = [
   Direction.EAST,
   Direction.SOUTH
 ];
+
+const NB_LIVES = 2;

@@ -9,8 +9,10 @@ class Sprite extends Component {
     this._position = position;
     this._direction = direction;
     this._askedToChangeDirection = false; // false par défault
-
     this._previousPosition = position;
+    this._isDead = false;
+    this._initPosition = position; // stocker la position initiale
+    this._initDirection = direction; // stocker la direction initiale
   }
 
   /**
@@ -19,6 +21,13 @@ class Sprite extends Component {
    */
   get position() {
     return this._position;
+  }
+
+  /**
+   * @returns {bollean}
+   */
+  get isDead() {
+    return this._isDead;
   }
 
   /**
@@ -85,4 +94,25 @@ class Sprite extends Component {
    * ne fait rien au niveau du sprite
    */
   notifyIsBlocked() {}
+
+  /**
+   * déclare le sprite mort
+   */
+  hasBeenEaten() {
+    this._isDead = true;
+  }
+
+  /**
+   * redonne la vie au sprite
+   */
+  respawn() {
+    //modifie la valeur de l’attribut isDead;
+    this._isDead = false;
+
+    // fait réapparaître le sprite à la position qu’il a eu lors de son initialisation;
+    this._position = this._initPosition;
+
+    //modifie le mouvement pour que le sprite reparte dans la direction initiale;
+    this._direction = this._initDirection;
+  }
 }
