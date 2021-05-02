@@ -12,6 +12,8 @@ class Maze {
     this._wallLayer = new Layer(array2d.length, array2d[0].length);
     this._dotLayer = new Layer(array2d.length, array2d[0].length);
 
+    this._nbDots = 0;
+
     for (let i = 0; i < array2d.length; i++) {
       const line = array2d[i];
       for (let j = 0; j < line.length; j++) {
@@ -27,12 +29,14 @@ class Maze {
             new Position(i, j),
             new Dot("dot-" + i + "-" + j, false)
           );
+          this._nbDots++; // incrementer le nombre des gommes
         } else if (line[j] === 3) {
           // gomme energizer
           this._dotLayer.setTile(
             new Position(i, j),
             new Dot("dot-energizer" + i + "-" + j, true)
           );
+          this._nbDots++; // incrementer le nombre des gommes
         } else if (line[j] === 4) {
           this._pacmanRespawn = new Position(i, j);
         } else if (line[j] === 5) {
@@ -40,6 +44,13 @@ class Maze {
         }
       }
     }
+  }
+
+  /**
+   * @returns {Number}
+   */
+  get nbDots() {
+    return this._nbDots;
   }
 
   /**
@@ -127,12 +138,29 @@ class Maze {
   }
 
   /**
-   * retourne la gomme (normale ou énergétique) qui se trouve à la position donnée. Lance une erreur s’il n’y a rien
+   * Enlève et retourne la gomme présente à la position donnée. Pour procéder à l’enlèvement, la valeur doit être remplacée par undefined
+   * Lance une erreur s’il n’y a rien
    * @param {Position} position
    * @return {Dot}
    */
   pick(position) {
-    if (this.canPick(position)) return this._dotLayer.getTile(position);
-    else console.error("Erreur! la position ne contient pas de gomme");
+    let dot = undefined;
+    if (this.canPick(position)) {
+      dot = this._dotLayer.getTile(position);
+      this._dotLayer.setTile(position, undefined);
+      return dot;
+    } else console.error("Erreur! la position ne contient pas de gomme");
+  }
+
+  /**
+   * Retourne true si toutes les gommes ont été mangées
+   * @return {boolean}
+   */
+  isEmpty() {
+    if (this._nbDots > 0) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }

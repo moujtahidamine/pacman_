@@ -15,6 +15,23 @@ class Game {
     this._pinky = new Ghost(this._maze.ghostRespawn, Direction.WEST);
     this._inky = new Ghost(this._maze.ghostRespawn, Direction.EAST);
     this._clyde = new Ghost(this._maze.ghostRespawn, Direction.SOUTH);
+
+    this._score = 0; // Représente le score de la partie en cours.
+    this._removedDot = undefined; //  Dernière gomme à avoir été mangée.
+  }
+
+  /**
+   * @return {Number}
+   */
+  get score() {
+    return this._score;
+  }
+
+  /**
+   * @return {Dot}
+   */
+  get removedDot() {
+    return this._removedDot;
   }
 
   /**
@@ -82,6 +99,20 @@ class Game {
       if (canPacmanWalkOn) {
         pacman.changeDirection(); // changer la direction
         pacman.move(); // bouger le Pacman
+
+        const maze = this._maze;
+        // vérifiez si Pacman est sur un tuile où une gomme est présente.
+        if (maze.canPick(pacman.position)) {
+          let dot = maze.pick(pacman.position);
+          if (dot.isEnergizer) {
+            // dans le cas d’une super-gomme, 100 points sont ajoutés au score
+            this._score = this._score + 100;
+          } else {
+            //dans le cas d’une gomme, 10 points sont ajoutés au score
+            this._score = this._score + 10;
+          }
+          this._removedDot = dot;
+        }
       }
     }
 

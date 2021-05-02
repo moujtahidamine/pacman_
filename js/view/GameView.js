@@ -48,6 +48,18 @@ class GameView {
     const clydeDiv = document.getElementById("clyde-id");
     clydeDiv.style.top = TAILLE_TUILE * clyde.position.row + "px";
     clydeDiv.style.left = TAILLE_TUILE * clyde.position.column + "px";
+
+    // au cas ou une gomme a été mangée :
+    let dot = this._game.removedDot;
+    let dotDiv = undefined;
+    if (dot !== undefined) {
+      dotDiv = document.getElementById(dot.id);
+      dotDiv.style.display = "none";
+    }
+
+    // Mise à jour du score
+    const scoreDiv = document.getElementById("score");
+    scoreDiv.innerHTML = this._game.score;
   }
 
   /**
@@ -76,8 +88,13 @@ class GameView {
           div.classList.add("wall");
         } else if (maze.getDotLayerTile(pos) !== undefined) {
           const dot = maze.getDotLayerTile(pos);
-          if (!dot.isEnergizer) div.classList.add("dot");
-          else div.classList.add("dot-energizer");
+          if (!dot.isEnergizer) {
+            div.classList.add("dot");
+            div.id = dot.id;
+          } else {
+            div.classList.add("dot-energizer");
+            div.id = dot.id;
+          }
         } else if (
           // position de départ du pacman
           i === maze.pacmanRespawn.row &&
