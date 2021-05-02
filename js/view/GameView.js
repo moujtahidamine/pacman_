@@ -5,6 +5,16 @@ class GameView {
   constructor(game) {
     this._game = game;
     this._createBoard(game.maze);
+    // afficher le meilleur score :
+    document.getElementById("high-score").innerHTML = this._game.highScore;
+  }
+
+  /**
+   * Cette méthode affiche la valeur du meilleur score présent dans l’instance Game.
+   */
+  displayGameOver() {
+    const root = document.getElementById("root");
+    root.innerHTML = "High Score : " + localStorage.getItem("highScore");
   }
 
   /**

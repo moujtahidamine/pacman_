@@ -24,7 +24,5 @@ class Pacman extends Sprite {
   hasBeenEaten() {
     this._nbLives = this._nbLives - 1;
     super.hasBeenEaten();
-
-    console.log(this._nbLives);
   }
 }

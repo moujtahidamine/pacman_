@@ -18,6 +18,23 @@ class Game {
 
     this._score = 0; // Représente le score de la partie en cours.
     this._removedDot = undefined; //  Dernière gomme à avoir été mangée.
+
+    /**
+     * le meilleur score doit être chargé à partir du localstorage
+     * Si aucune valeur n’est présente dans le localstorage, le meilleur score vaut 0.
+     */
+    if (localStorage.getItem("highScore") === null) {
+      this._highScore = 0;
+    } else {
+      this._highScore = localStorage.getItem("highScore");
+    }
+  }
+
+  /**
+   * @return {Number}
+   */
+  get highScore() {
+    return this._highScore;
   }
 
   /**
@@ -211,5 +228,16 @@ class Game {
     this._pinky.respawn();
     this._inky.respawn();
     this.clyde.respawn();
+  }
+
+  /**
+   * Cette fonction compare le score courant avec le meilleur score. Si le score
+   * courant est meilleur, alors il doit être sauvegardé (dans l’instance et dans le localstorage).
+   */
+  saveScore() {
+    if (this._score > this._highScore) {
+      this._highScore = this._score;
+      localStorage.setItem("highScore", this._highScore);
+    }
   }
 }
