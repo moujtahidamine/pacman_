@@ -183,4 +183,10 @@ class GameView {
     const nbLivesDiv = document.getElementById("nb-lives");
     nbLivesDiv.innerHTML = this._game._pacman.nbLives;
   }
+
+  changePacmanColor() {
+    const pacmanDiv = document.getElementById("pacman-id");
+    const colors = ["green", "gray", "#00FFFF"];
+    pacmanDiv.style.backgroundColor = randomItem(colors);
+  }
 }

@@ -42,6 +42,11 @@ class GameCtrl {
 
       view.updateFrame();
       view.updateLives();
+
+      //
+      if (game.pacmanHasToChangeColor()) {
+        view.changePacmanColor();
+      }
     }, RUN_INTERVAL);
   }
 }

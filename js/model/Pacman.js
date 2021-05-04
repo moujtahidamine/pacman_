@@ -9,6 +9,7 @@ class Pacman extends Sprite {
   constructor(position, direction) {
     super(position, direction, PACMAN_ID);
     this._nbLives = NB_LIVES; // 2 (voir le fichier constants.js)
+    this._hasToChangeColor = false;
   }
 
   /**
@@ -31,5 +32,16 @@ class Pacman extends Sprite {
    */
   addLive() {
     this._nbLives = this._nbLives + 1;
+  }
+
+  /**
+   * @return {boolean}
+   */
+  get hasToChangeColor() {
+    return this._hasToChangeColor;
+  }
+
+  changeColor(hasToChangeColor) {
+    this._hasToChangeColor = hasToChangeColor;
   }
 }

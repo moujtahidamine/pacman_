@@ -137,6 +137,9 @@ class Game {
 
           this._removedDot = dot;
         }
+      } else {
+        //change color
+        this.changeColor(true);
       }
     }
 
@@ -266,5 +269,16 @@ class Game {
 
   addFantome() {
     console.log("Add new ghost");
+  }
+
+  /**
+   * @return {boolean}
+   */
+  pacmanHasToChangeColor() {
+    return this._pacman.hasToChangeColor;
+  }
+
+  changeColor(hasToChangeColor) {
+    this._pacman.changeColor(hasToChangeColor);
   }
 }

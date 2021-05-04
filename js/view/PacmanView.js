@@ -26,6 +26,9 @@ class PacmanView {
       } else if (pressedKey == "ArrowLeft") {
         askedDirection = Direction.WEST;
         // console.log("You pressed the 'left' key!");
+      } else if (pressedKey == "s") {
+        askedDirection = new Direction(0, 0);
+        console.log("Pause");
       }
 
       if (askedDirection !== undefined) {
