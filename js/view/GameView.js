@@ -7,6 +7,21 @@ class GameView {
     this._createBoard(game.maze);
     // afficher le meilleur score :
     document.getElementById("high-score").innerHTML = this._game.highScore;
+    this.ajouterFantome();
+  }
+
+  /**
+   * ajouter un fantome en pressant sur la touche F
+   */
+  ajouterFantome() {
+    const game = this._game;
+
+    document.addEventListener("keydown", function(event) {
+      let pressedKey = event.key;
+      if (pressedKey == "f") {
+        game.addFantome();
+      }
+    });
   }
 
   /**

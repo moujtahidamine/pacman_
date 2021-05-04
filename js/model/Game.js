@@ -128,6 +128,13 @@ class Game {
             //dans le cas d’une gomme, 10 points sont ajoutés au score
             this._score = this._score + 10;
           }
+          // ajouter une vie tous les 200 pts:
+          const x = Math.ceil(this._score / 200) * 200;
+          if (this._score === x) {
+            pacman.addLive();
+          }
+          /**/
+
           this._removedDot = dot;
         }
       }
@@ -239,5 +246,25 @@ class Game {
       this._highScore = this._score;
       localStorage.setItem("highScore", this._highScore);
     }
+  }
+
+  /**
+   * Permet de savoir si le niveau courant est terminé
+   * @return {boolean}
+   */
+  lvlSucceed() {
+    const maze = this._maze;
+    if (maze.isEmpty()) return true;
+    else return false;
+  }
+
+  /**
+   * Lorsque cette fonction est appelée, un nouveau labyrinthe est créé
+   * et la position ainsi que la direction des personnages sont remises aux valeurs initiales.
+   */
+  nextLevel() {}
+
+  addFantome() {
+    console.log("Add new ghost");
   }
 }

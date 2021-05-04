@@ -25,4 +25,11 @@ class Pacman extends Sprite {
     this._nbLives = this._nbLives - 1;
     super.hasBeenEaten();
   }
+
+  /**
+   * ajouter une vie
+   */
+  addLive() {
+    this._nbLives = this._nbLives + 1;
+  }
 }
